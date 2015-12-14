@@ -1,22 +1,13 @@
 	<html>
 		<head>
-			<title>>django girls blog</title>
+			<title>django girls blog</title>
 		</head>
-		<body>
-			<div>
-				<h1><a href="">django girls blog</a></h1>
-			</div>
-			<div>
-				</p> published: 14.06.2014, 12:14</p>
-				<h2><a href="">my first post</a></h2>
-				<p>aenean eu leo quam. pellentesque ornare sem lacijnia quam ... </p>
-			</div>
-			<div>
-				</p> published: 14.06.2014, 12:14</p>
-				<h2><a href="">my second post</a></h2>
-				<p>aenean eu leo quam. pellentesque ornare sem lacijnia quam ... </p>
-			</div>
-		</body>
-		<p> Hi there!</p>
-		<p>it works!</p>
+	{% for post in posts %}
+		<div>
+			<p>published: {{post.published_date}} </p>
+			<p><h1><a href=""> title: {{post.title}}</a></h1> </p>
+			<p><h2>text: {{post.text}}</h2></p>
+			<p></p>
+		</div>
+	{% endfor %}
 	</html>
