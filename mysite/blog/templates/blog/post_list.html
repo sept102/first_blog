@@ -1,13 +1,15 @@
-	<html>
-		<head>
-			<title>django girls blog</title>
-		</head>
+{% extends 'blog/base.html' %}
+
+{% block content %}
 	{% for post in posts %}
-		<div>
-			<p>published: {{post.published_date}} </p>
-			<p><h1><a href=""> title: {{post.title}}</a></h1> </p>
-			<p><h2>text: {{post.text}}</h2></p>
-			<p></p>
+		<div class="post">
+			<div class="date">
+				{{ post.created_date }}
+			</div>
+			{% if user.is_authenticated %}
+				<h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
+			{% endif %}
+			<p>{{ post.text|linebreaks }}</p>
 		</div>
 	{% endfor %}
-	</html>
+{% endblock %}
